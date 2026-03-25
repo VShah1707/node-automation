@@ -2,7 +2,7 @@ console.log("🔴 START - Before imports");
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import fs from "fs";
-
+console.error("Error")
 dotenv.config();
 
 // ✅ Safe email parsing
