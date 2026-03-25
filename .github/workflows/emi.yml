@@ -22,10 +22,10 @@ jobs:
         run: npm install
 
       - name: Run script
-        run: |
-              echo "Script execution started"
-              node index.js
-              echo "Script execution completed"
+         run: |
+          echo "Script execution started"
+          node index.js
+          echo "Script execution completed"
         env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
