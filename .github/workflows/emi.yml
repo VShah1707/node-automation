@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run script
-         run: |
+        run: |
           echo "Script execution started"
           node index.js
           echo "Script execution completed"
