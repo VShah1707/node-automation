@@ -1,4 +1,4 @@
-console.log("🔴 START ");
+console.log("🔴 testing scriopt run ");
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import fs from "fs";
