@@ -61,10 +61,10 @@ const saveEmiNumber = (emiNumber) => {
 
     const emiDay = lastDay >= 30 ? 30 : lastDay;
 
-    if (today.getDate() !== emiDay) {
-      console.log("⏳ Not EMI date");
-      return;
-    }
+    // if (today.getDate() !== emiDay) {
+    //   console.log("⏳ Not EMI date");
+    //   return;
+    // }
 
     // 📅 EMI date calculation
     const emiDate = new Date(START_DATE);
