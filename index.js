@@ -1,4 +1,4 @@
-console.log("🔴 START - Before imports");
+console.log("🔴 START ");
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import fs from "fs";
