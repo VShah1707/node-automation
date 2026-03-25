@@ -2,7 +2,7 @@ name: EMI Reminder
 
 on:
   schedule:
-    - cron: "29 11 * * *"  # 7 AM IST
+    - cron: "2 12 * * *"  # 7 AM IST
   workflow_dispatch:
 permissions: 
     contents: write
