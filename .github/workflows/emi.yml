@@ -27,3 +27,12 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+
+      # ✅ THIS FIXES emi.json RESET ISSUE
+      - name: Commit updated EMI
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add emi.json
+          git commit -m "Update EMI number" || echo "No changes"
+          git push
