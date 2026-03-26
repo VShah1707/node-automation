@@ -208,7 +208,7 @@ const saveEmiNumber = (emiNumber) => {
                 <tr>
                   <td style="padding:16px 24px;">
                     <p style="margin:0; font-size:13px; color:#ff9a9a; font-family:Arial,sans-serif; line-height:1.6;">
-                      &#9888;&#65039; &nbsp;<strong>Action Required:</strong> Please maintain sufficient balance in your <strong>XYZ Bank</strong> account before the due date to avoid late fees or penalties.
+                      &#9888;&#65039; &nbsp;<strong>Action Required:</strong> Please maintain sufficient balance in your <strong>ICICI Bank</strong> account before the due date to avoid late fees or penalties.
                     </p>
                   </td>
                 </tr>
