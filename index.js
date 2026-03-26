@@ -220,7 +220,7 @@ const saveEmiNumber = (emiNumber) => {
             <tr>
               <td style="padding:14px 22px;">
                 <p style="margin:0;font-size:13px;color:#dc2626;font-family:Arial,sans-serif;line-height:1.6;font-weight:bold;">
-                  &#9888; Ensure balance in XYZ Bank before ${formattedDate} to avoid penalties.
+                  &#9888; Ensure balance in ICICI Bank before ${formattedDate} to avoid penalties.
                 </p>
               </td>
             </tr>
