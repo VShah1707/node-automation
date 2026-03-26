@@ -25,7 +25,7 @@ const TOTAL_TENURE = 60;
 // 📂 File path
 const FILE_PATH = "./emi.json";
 
-// 📥 Load EMI number (number of EMIs already paid)
+// 📥 Load EMI number (EMIs already paid)
 const getEmiNumber = () => {
   try {
     const data = fs.readFileSync(FILE_PATH, "utf-8");
@@ -61,7 +61,7 @@ const saveEmiNumber = (emiNumber) => {
       year: "numeric",
     });
 
-    // ✅ CORRECT LOGIC
+    // ✅ CORRECT EMI LOGIC
     const paidEMIs = emiNumber;
     const currentEmi = paidEMIs + 1;
     const remainingTenure = TOTAL_TENURE - paidEMIs;
@@ -79,19 +79,69 @@ const saveEmiNumber = (emiNumber) => {
       to: emails,
       subject: `💳 EMI #${currentEmi} Due — ₹${EMI_AMOUNT} on ${formattedDate}`,
       html: `
-        <!-- ONLY CHANGES BELOW -->
-        <!-- Replaced emiNumber → currentEmi -->
-        <!-- Replaced paidEMIs logic -->
-        
-        <h2>EMI #${currentEmi}</h2>
-        <p>Total Paid: ₹${totalPaid}</p>
-        <p>Remaining: ₹${totalRemaining}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMI Reminder</title>
+</head>
+<body style="margin:0; padding:0; background-color:#0f0f13; font-family:'Georgia', serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f0f13; padding: 40px 16px;">
+    <tr>
+      <td align="center">
+
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background:#1a1a24; border-radius:20px; overflow:hidden; border: 1px solid #2e2e42;">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding: 36px 40px;">
+              <h1 style="margin:0; color:#e8e8ff;">Loan EMI Due</h1>
+              <p style="color:#aaa;">EMI #${currentEmi}</p>
+            </td>
+          </tr>
+
+          <!-- Main -->
+          <tr>
+            <td style="padding: 24px 40px;">
+              <h2 style="color:#f0d080;">₹${EMI_AMOUNT.toLocaleString("en-IN")}</h2>
+              <p style="color:#ccc;">Due on ${formattedDate}</p>
+              <p style="color:#ccc;">Remaining Tenure: ${remainingTenure}</p>
+            </td>
+          </tr>
+
+          <!-- Progress -->
+          <tr>
+            <td style="padding: 24px 40px;">
+              <p style="color:#ccc;">Progress: ${progressPercent}%</p>
+              <p style="color:#ccc;">EMIs Paid: ${paidEMIs} / ${TOTAL_TENURE}</p>
+              <p style="color:#ccc;">Total Paid: ₹${totalPaid}</p>
+              <p style="color:#ccc;">Remaining Amount: ₹${totalRemaining}</p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 24px 40px;">
+              <p style="color:#888;">Automated EMI reminder</p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
       `,
     });
 
     console.log("✅ Email sent:", info.response);
 
-    // 💾 Save next EMI (increment paid count)
+    // 💾 increment paid EMI
     saveEmiNumber(emiNumber + 1);
 
   } catch (error) {
