@@ -65,18 +65,10 @@ const saveEmiNumber = (emiNumber) => {
     //   return;
     // }
 
-    // 📅 EMI date calculation
-    const emiDate = new Date(START_DATE);
-    emiDate.setMonth(START_DATE.getMonth() + (emiNumber - 1));
-    const emiMonthLastDay = new Date(
-      emiDate.getFullYear(),
-      emiDate.getMonth() + 1,
-      0
-    ).getDate();
-    const finalDay = emiMonthLastDay >= 30 ? 30 : emiMonthLastDay;
-    emiDate.setDate(finalDay);
+    // 📅 Due date = 3rd of next month from whenever email is sent
+    const dueDate = new Date(today.getFullYear(), today.getMonth() + 1, 3);
 
-    const formattedDate = emiDate.toLocaleDateString("en-IN", {
+    const formattedDate = dueDate.toLocaleDateString("en-IN", {
       day: "2-digit",
       month: "long",
       year: "numeric",
@@ -88,7 +80,7 @@ const saveEmiNumber = (emiNumber) => {
     const totalPaid = (paidEMIs * EMI_AMOUNT).toLocaleString("en-IN");
     const totalRemaining = (remainingTenure * EMI_AMOUNT).toLocaleString("en-IN");
 
-    console.log(`📅 EMI #${emiNumber} | Remaining: ${remainingTenure}`);
+    console.log(`📅 EMI #${emiNumber} | Due: ${formattedDate} | Remaining: ${remainingTenure}`);
 
     const info = await transporter.sendMail({
       from: `"EMI Reminder" <${process.env.EMAIL_USER}>`,
@@ -149,7 +141,7 @@ const saveEmiNumber = (emiNumber) => {
                   <td style="padding: 28px 32px;">
                     <p style="margin:0 0 8px; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#6c6c9a; font-family:Arial,sans-serif;">Amount Due</p>
                     <p style="margin:0; font-size:46px; font-family:'Georgia',serif; color:#f0d080; letter-spacing:-1px; line-height:1;">
-                      ₹<strong>${EMI_AMOUNT.toLocaleString("en-IN")}</strong>
+                      &#8377;<strong>${EMI_AMOUNT.toLocaleString("en-IN")}</strong>
                     </p>
                     <p style="margin:10px 0 0; font-size:13px; color:#6c6c9a; font-family:Arial,sans-serif;">Due on &nbsp;<strong style="color:#c8c8e8;">${formattedDate}</strong></p>
                   </td>
@@ -195,11 +187,11 @@ const saveEmiNumber = (emiNumber) => {
                         </td>
                         <td align="center">
                           <p style="margin:0; font-size:11px; color:#6c6c9a; font-family:Arial,sans-serif;">Total Paid</p>
-                          <p style="margin:2px 0 0; font-size:15px; color:#e8e8ff; font-family:Arial,sans-serif; font-weight:bold;">₹${totalPaid}</p>
+                          <p style="margin:2px 0 0; font-size:15px; color:#e8e8ff; font-family:Arial,sans-serif; font-weight:bold;">&#8377;${totalPaid}</p>
                         </td>
                         <td align="right">
                           <p style="margin:0; font-size:11px; color:#6c6c9a; font-family:Arial,sans-serif;">Remaining</p>
-                          <p style="margin:2px 0 0; font-size:15px; color:#e8e8ff; font-family:Arial,sans-serif; font-weight:bold;">₹${totalRemaining}</p>
+                          <p style="margin:2px 0 0; font-size:15px; color:#e8e8ff; font-family:Arial,sans-serif; font-weight:bold;">&#8377;${totalRemaining}</p>
                         </td>
                       </tr>
                     </table>
@@ -216,7 +208,7 @@ const saveEmiNumber = (emiNumber) => {
                 <tr>
                   <td style="padding:16px 24px;">
                     <p style="margin:0; font-size:13px; color:#ff9a9a; font-family:Arial,sans-serif; line-height:1.6;">
-                      ⚠️ &nbsp;<strong>Action Required:</strong> Please maintain sufficient balance in your <strong>XYZ Bank</strong> account before the due date to avoid late fees or penalties.
+                      &#9888;&#65039; &nbsp;<strong>Action Required:</strong> Please maintain sufficient balance in your <strong>XYZ Bank</strong> account before the due date to avoid late fees or penalties.
                     </p>
                   </td>
                 </tr>
@@ -239,11 +231,11 @@ const saveEmiNumber = (emiNumber) => {
                   <td>
                     <p style="margin:0; font-size:11px; color:#44445a; font-family:Arial,sans-serif; line-height:1.7;">
                       This is an automated reminder. Do not reply to this email.<br/>
-                      © ${new Date().getFullYear()} EMI Tracker &nbsp;·&nbsp; All rights reserved.
+                      &copy; ${new Date().getFullYear()} EMI Tracker &nbsp;&middot;&nbsp; All rights reserved.
                     </p>
                   </td>
                   <td align="right" valign="middle">
-                    <div style="width:36px; height:36px; background:linear-gradient(135deg,#c9a84c,#f0d080); border-radius:50%; text-align:center; line-height:36px; font-size:16px;">₹</div>
+                    <div style="width:36px; height:36px; background:linear-gradient(135deg,#c9a84c,#f0d080); border-radius:50%; text-align:center; line-height:36px; font-size:16px;">&#8377;</div>
                   </td>
                 </tr>
               </table>
