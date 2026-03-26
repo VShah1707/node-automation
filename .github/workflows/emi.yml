@@ -39,5 +39,5 @@ jobs:
           git config user.email "varshilshah2468@gmail.com"
           git add emi.json
           git commit -m "Update EMI number" || echo "No changes"
-          git pull origin main --rebase
+          # git pull origin main --rebase
           git push origin main
