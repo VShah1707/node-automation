@@ -42,14 +42,21 @@ const saveEmiNumber = (emiNumber) => {
 // 🚀 MAIN FUNCTION
 (async () => {
   try {
+    // 🗓️ Only run on the last day of the month
+    const today = new Date();
+    const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+
+    if (today.getDate() !== lastDay) {
+      console.log(`⏭️ Today is ${today.getDate()}. Last day is ${lastDay}. Skipping.`);
+      return;
+    }
+
     let emiNumber = getEmiNumber();
 
     if (emiNumber >= TOTAL_TENURE) {
       console.log("✅ All EMIs completed");
       return;
     }
-
-    const today = new Date();
 
     // 📅 Due date = 3rd of next month
     const dueDate = new Date(today.getFullYear(), today.getMonth() + 1, 3);
