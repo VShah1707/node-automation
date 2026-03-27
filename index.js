@@ -142,10 +142,11 @@ const saveEmiNumber = (emiNumber) => {
       <!-- GREETING -->
       <tr>
         <td style="padding:32px 44px 20px;">
-          <p style="margin:0;font-size:15px;color:#374151;font-family:Arial,sans-serif;line-height:1.7;">
-            Hi <strong style="color:#111827;">Jay</strong>, my auto debit for your loan is scheduled. Please ensure to send the EMI.
-          </p>
-        </td>
+  <p style="margin:0;font-size:15px;color:#374151;font-family:Arial,sans-serif;line-height:1.7;">
+    Hi <strong style="color:#111827;">Jay</strong>, the auto-debit for your loan is scheduled on <strong>${formattedDate}</strong>. 
+    Please ensure the EMI amount is available before the due date to avoid any issues.
+  </p>
+</td>
       </tr>
 
       <!-- 3 STAT BOXES -->
@@ -217,11 +218,11 @@ const saveEmiNumber = (emiNumber) => {
         <td style="padding:0 44px 36px;">
           <table width="100%" cellpadding="0" cellspacing="0" style="background:#fef2f2;border-radius:10px;border:1px solid #fca5a5;">
             <tr>
-              <td style="padding:14px 22px;">
-                <p style="margin:0;font-size:13px;color:#dc2626;font-family:Arial,sans-serif;line-height:1.6;font-weight:bold;">
-                  &#9888; <strong>Varshil! </strong>Please ensure balance in ICICI Bank before ${formattedDate} to avoid penalties.
-                </p>
-              </td>
+             <td style="padding:14px 22px;">
+  <p style="margin:0;font-size:13px;color:#dc2626;font-family:Arial,sans-serif;line-height:1.6;font-weight:bold;">
+    &#9888; <strong>Varshil!</strong> Please ensure sufficient balance is maintained in your ICICI Bank account before ${formattedDate} to avoid penalties.
+  </p>
+</td>
             </tr>
           </table>
         </td>
