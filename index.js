@@ -1,4 +1,3 @@
-console.log("🔴 testing script run ");
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import fs from "fs";
@@ -144,7 +143,7 @@ const saveEmiNumber = (emiNumber) => {
       <tr>
         <td style="padding:32px 44px 20px;">
           <p style="margin:0;font-size:15px;color:#374151;font-family:Arial,sans-serif;line-height:1.7;">
-            Hi <strong style="color:#111827;">Varshil</strong>, your auto-debit is scheduled. Please ensure your account balance is ready.
+            Hi <strong style="color:#111827;">Jay</strong>, my auto debit for your loan is scheduled. Please ensure to send the EMI.
           </p>
         </td>
       </tr>
@@ -220,7 +219,7 @@ const saveEmiNumber = (emiNumber) => {
             <tr>
               <td style="padding:14px 22px;">
                 <p style="margin:0;font-size:13px;color:#dc2626;font-family:Arial,sans-serif;line-height:1.6;font-weight:bold;">
-                  &#9888; Ensure balance in ICICI Bank before ${formattedDate} to avoid penalties.
+                  &#9888; <strong>Varshil !</strong>Ensure balance in ICICI Bank before ${formattedDate} to avoid penalties.
                 </p>
               </td>
             </tr>
